@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CycleScaling : MonoBehaviour
+public class CycleScaler : MonoBehaviour
 {
     [SerializeField][Range(1f, 5f)] private float _minScale = 1;
     [SerializeField][Range(1f, 5f)] private float _maxScale = 2;
