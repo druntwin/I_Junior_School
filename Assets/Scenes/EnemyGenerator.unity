@@ -332,6 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356706908}
   - component: {fileID: 356706909}
+  - component: {fileID: 356706910}
   m_Layer: 0
   m_Name: EnemyGenerator
   m_TagString: Untagged
@@ -367,8 +368,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointsContainer: {fileID: 1346599413}
-  _enemy: {fileID: 7107653926545670189, guid: c8444be2a5c29304fa4e5669049784bf, type: 3}
+  _enemyPrefab: {fileID: 0}
   _enemyCount: 10
+--- !u!114 &356706910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356706907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32e0f30420bbaa4fac98ac6e7dd8876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &529238791
 GameObject:
   m_ObjectHideFlags: 0
