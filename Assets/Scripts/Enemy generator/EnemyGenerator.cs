@@ -4,15 +4,14 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Transform))]
-[RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof(EnemyMover))]
 public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private Transform _pointsContainer;
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private EnemyMover _enemyPrefab;
     [SerializeField] private int _enemyCount;
 
     private Transform[] _points;
-    private int _maxAngle = 365;
 
     private void Start()
     {
@@ -31,9 +30,13 @@ public class EnemyGenerator : MonoBehaviour
 
         for(int i = 0; i < _enemyCount; i++)
         {
+            sbyte directionY = 0;
             int pointIndex = Random.Range(0, _points.Length);
+            Vector2 direction2D = Random.insideUnitCircle.normalized;
+            Vector3 direction = new Vector3(direction2D.x, directionY, direction2D.y);
 
-            var enemy = Instantiate(_enemyPrefab, _points[pointIndex].position, _enemyPrefab.transform.rotation * Quaternion.Euler(0, Random.Range(0, _maxAngle), 0));
+            var enemy = Instantiate(_enemyPrefab, _points[pointIndex].position, Quaternion.identity);
+            enemy.SetDirection(direction);
 
             yield return waitSomeSeconds;
         }

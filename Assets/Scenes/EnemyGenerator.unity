@@ -368,7 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointsContainer: {fileID: 1346599413}
-  _enemyPrefab: {fileID: 0}
+  _enemyPrefab: {fileID: 6996310450519271837, guid: c8444be2a5c29304fa4e5669049784bf,
+    type: 3}
   _enemyCount: 10
 --- !u!114 &356706910
 MonoBehaviour:
@@ -382,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32e0f30420bbaa4fac98ac6e7dd8876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 2
 --- !u!1 &529238791
 GameObject:
   m_ObjectHideFlags: 0
