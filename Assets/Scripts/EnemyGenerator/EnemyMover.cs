@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour 
 {
     [SerializeField][Range(0f, 10f)] private float _moveSpeed = 2f;
+
     private Vector3 _direction;
 
     private void OnEnable()
