@@ -22,11 +22,11 @@ public class EnemyTargetMover : MonoBehaviour
     public void SetTargetPoint(Transform targetPoint)
     {
         _targetPoint = targetPoint;
-        transform.LookAt(transform.position + _targetPoint.position);
     }
 
     private void Move()
     {
+        transform.LookAt(_targetPoint.position);
         transform.position = Vector3.MoveTowards(transform.position, _targetPoint.position, _speed * Time.deltaTime);
     }
 }
