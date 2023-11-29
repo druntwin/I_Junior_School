@@ -799,7 +799,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3031337931683798307, guid: 2221eaa51678607458eaf596fe2359e4,
     type: 3}
   _shootingDelay: 1
-  _speed: 2
+  _speed: 800
   _target: {fileID: 529916881}
 --- !u!54 &1481911428
 Rigidbody:
