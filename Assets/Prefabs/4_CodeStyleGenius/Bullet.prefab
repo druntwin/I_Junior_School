@@ -118,8 +118,9 @@ GameObject:
   - component: {fileID: 9093591176198091789}
   - component: {fileID: 2897066932192254964}
   - component: {fileID: 5380553146249054265}
+  - component: {fileID: 4425116351894575638}
   m_Layer: 0
-  m_Name: BulletShell
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,6 +244,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4425116351894575638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031337931683798307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68317b167e1648f4b94bfa550bcd0af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3513452600267285116
 GameObject:
   m_ObjectHideFlags: 0
