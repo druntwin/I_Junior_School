@@ -31,40 +31,42 @@ public class AlarmTrigger : MonoBehaviour
 
     private void OnAlarm()
     {
-        if (_door.IsDoorTiggered)
-            StartCoroutine(DoVolumeUp());
-        else
-            StartCoroutine(DoVolumeDown());
+            StartCoroutine(SetVolume());
     }
 
-    IEnumerator DoVolumeUp()
+    IEnumerator SetVolume()
     {
-        var waitSomeTime = new WaitForSeconds(_volumeUpChangeSpeed);
-
-        _audioSource.Play();
-
-        while (_audioSource.volume < _maxVolume)
-        {
-            _audioSource.volume += _volumeStep;
-
-            yield return waitSomeTime;
-        }
-
-        _audioSource.volume = _maxVolume;
-    }
-
-    IEnumerator DoVolumeDown()
-    {
+        float volumeChangeSpeed;
         var waitSomeTime = new WaitForSeconds(_volumeDownChangeSpeed);
 
-        while (_audioSource.volume > _minVolume)
+        if (_door.IsDoorTiggered)
         {
-            _audioSource.volume -= _volumeStep;
+            volumeChangeSpeed = _volumeUpChangeSpeed;
 
-            yield return waitSomeTime;
+            _audioSource.Play();
+
+            while (_audioSource.volume < _maxVolume)
+            {
+                _audioSource.volume += _volumeStep;
+
+                yield return waitSomeTime;
+            }
+
+            _audioSource.volume = _maxVolume;
         }
+        else
+        {
+            volumeChangeSpeed = _volumeDownChangeSpeed;
 
-        _audioSource.volume = _minVolume;
-        _audioSource.Stop();
+            while (_audioSource.volume > _minVolume)
+            {
+                _audioSource.volume -= _volumeStep;
+
+                yield return waitSomeTime;
+            }
+
+            _audioSource.volume = _minVolume;
+            _audioSource.Stop();
+        }
     }
 }
