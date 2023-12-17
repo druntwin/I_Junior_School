@@ -275,7 +275,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -476,13 +476,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4942377, y: -0, z: -0, w: 0.8693268}
-  m_LocalPosition: {x: 0, y: 123.4, z: -102.6}
+  m_LocalRotation: {x: 0.4621084, y: 0.30832237, z: -0.1752903, w: 0.81281394}
+  m_LocalPosition: {x: -17.2, y: 34.8, z: -15.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 59.239, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 59.239, y: 41.546, z: 0}
 --- !u!1 &1791001622
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
   _spawnArea: {fileID: 298448764}
   _diamondPrefab: {fileID: 3337325115934953018, guid: cd8f3075174735943bb5026d77094e57,
     type: 3}
-  _diamondsMaxCount: 3
+  _diamondsMaxCount: 10
   _spawnDelay: 5
 --- !u!4 &1935308567
 Transform:
@@ -639,74 +639,6 @@ Transform:
   - {fileID: 298448764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1389131909204490797
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109460695577809164, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8391170794730327010, guid: 73bb643e7cd93e04789b7f2b564f22a0,
-        type: 3}
-      propertyPath: m_Name
-      value: Harvester
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 73bb643e7cd93e04789b7f2b564f22a0, type: 3}
 --- !u!1001 &8637375818833086536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -783,5 +715,4 @@ SceneRoots:
   - {fileID: 203844589}
   - {fileID: 1791001626}
   - {fileID: 8637375818833086536}
-  - {fileID: 1389131909204490797}
   - {fileID: 1935308567}

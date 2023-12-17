@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class Harvester : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _speed = 7f;
+
+    private Transform _baseTransform;
+    private Transform _targetTransform;
+
+    private void Update()
     {
-        
+        Move();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Move()
     {
-        
+        if (_targetTransform != null)
+        {
+            transform.LookAt(_targetTransform.position);
+            transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, _speed * Time.deltaTime);
+        }
+    }
+
+    public void SetBaseTransform(Transform baseTransform)
+    {
+        _baseTransform = baseTransform;
+    }
+
+    public void SetTargetTransform(Transform targetTransform)
+    {
+        _targetTransform = targetTransform;
+    }
+
+    public void ChangeTargetToBase()
+    {
+        _targetTransform = _baseTransform;
     }
 }

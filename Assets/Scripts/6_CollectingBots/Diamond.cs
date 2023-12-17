@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Diamond : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 _transportPosition = new Vector3(0, 3, 0);
+    private void OnTriggerEnter(Collider collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.TryGetComponent(out Harvester harvester))
+        {
+            Debug.Log("HARV");
+            harvester.ChangeTargetToBase();
+            transform.parent = collision.transform;
+            transform.localPosition = _transportPosition;
+        }
     }
 }
