@@ -7,41 +7,65 @@ public class DiamomdSpawner : MonoBehaviour
     [SerializeField] private Transform _spawnArea;
     [SerializeField] private Diamond _diamondPrefab;
     [SerializeField] private int _diamondsMaxCount;
-    [SerializeField] private int _spawnDelay = 5;
+    [SerializeField] private int _minSpawnDelay = 1;
+    [SerializeField] private int _maxSpawnDelay = 5;
 
-    private List<Diamond> _diamonds = new List<Diamond>();
+    private Queue<Diamond> _diamonds = new Queue<Diamond>();
     private MeshRenderer _renderer;
-    private Vector3 _areaSize;
+
+    private float _spawnMinPositionX;
+    private float _spawnMaxPositionX;
+    private float _spawnMinPositionZ;
+    private float _spawnMaxPositionZ;
 
     private void Start()
     {
-        _renderer = _spawnArea.GetComponent<MeshRenderer>();
-        _areaSize = _renderer.bounds.size;
-        
+        _renderer = _spawnArea.GetComponent<MeshRenderer>();        
+
+        CalculateSpawnArea();
         StartCoroutine(CreateDiamonds());
+    }
+
+    private void CalculateSpawnArea()
+    {
+        Vector3 areaSize = _renderer.bounds.size;
+        int halfSizeDivider = 2;
+
+        _spawnMinPositionX = transform.position.x - areaSize.x / halfSizeDivider;
+        _spawnMaxPositionX = transform.position.x + areaSize.x / halfSizeDivider;
+        _spawnMinPositionZ = transform.position.z - areaSize.z / halfSizeDivider;
+        _spawnMaxPositionZ = transform.position.z + areaSize.z / halfSizeDivider;
     }
 
     private IEnumerator CreateDiamonds()
     {
-        var waitSomeSeconds = new WaitForSecondsRealtime(_spawnDelay);
+        var waitSomeSeconds = new WaitForSecondsRealtime(Random.Range(_minSpawnDelay, _maxSpawnDelay));
+
+        yield return waitSomeSeconds;
 
         for (int i = 0; i < _diamondsMaxCount; i++)
         {
-            int halfSizeDivider = 2;
-            float spawnMinPositionX = transform.position.x - _areaSize.x / halfSizeDivider;
-            float spawnMaxPositionX = transform.position.x + _areaSize.x / halfSizeDivider;
-            float spawnPositionX = Random.Range(spawnMinPositionX, spawnMaxPositionX);
+            float spawnPositionX = Random.Range(_spawnMinPositionX, _spawnMaxPositionX);
+            float spawnPositionZ = Random.Range(_spawnMinPositionZ, _spawnMaxPositionZ);
+            int spawnPositionY = 0;
 
-            float spawnMinPositionZ = transform.position.z - _areaSize.z / halfSizeDivider;
-            float spawnMaxPositionZ = transform.position.z + _areaSize.z / halfSizeDivider;
-            float spawnPositionZ = Random.Range(spawnMinPositionZ, spawnMaxPositionZ);
-
-            int spawnPositionY = 1;
-
-            var diamond = Instantiate(_diamondPrefab, new Vector3(spawnPositionX, spawnPositionY, spawnPositionZ), Quaternion.identity, transform);
-            _diamonds.Add(diamond);
+            Diamond diamond = Instantiate(_diamondPrefab, new Vector3(spawnPositionX, spawnPositionY, spawnPositionZ), _diamondPrefab.transform.rotation, transform);
+            _diamonds.Enqueue(diamond);
 
             yield return waitSomeSeconds;
         }
+    }
+
+    public Diamond GetDiamond()
+    {
+        if (_diamonds.Count > 0)
+            return _diamonds.Dequeue();
+
+        return null;
+    }
+
+    public int GetDiamondsCount()
+    {
+        return _diamonds.Count;
     }
 }

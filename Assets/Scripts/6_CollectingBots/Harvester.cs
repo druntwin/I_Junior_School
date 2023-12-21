@@ -8,10 +8,33 @@ public class Harvester : MonoBehaviour
 
     private Transform _baseTransform;
     private Transform _targetTransform;
+    private Vector3 _transportPosition = new Vector3(0, 2.5f, 0);
+    private bool _isFull = false;
+    public bool IsBusy {get; private set;}
+
+    private void Start()
+    {
+        IsBusy = false;
+    }
 
     private void Update()
     {
-        Move();
+        if (IsBusy)
+            Move();
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (_isFull == false && collision.TryGetComponent(out Diamond diamond))
+        {
+            if(diamond.IsCollected == false)
+            {
+                ChangeTargetToBase();
+                diamond.transform.parent = transform;
+                diamond.transform.localPosition = _transportPosition;
+                _isFull = true;
+            }
+        }
     }
 
     private void Move()
@@ -23,14 +46,23 @@ public class Harvester : MonoBehaviour
         }
     }
 
+    public void ResetPosition()
+    {
+        transform.position = _baseTransform.position;
+        transform.rotation = _baseTransform.rotation;
+        IsBusy = false;
+        _isFull = false;
+    }
+
     public void SetBaseTransform(Transform baseTransform)
     {
-        _baseTransform = baseTransform;
+        _baseTransform = baseTransform;        
     }
 
     public void SetTargetTransform(Transform targetTransform)
     {
         _targetTransform = targetTransform;
+        IsBusy = true;
     }
 
     public void ChangeTargetToBase()

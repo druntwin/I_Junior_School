@@ -31,7 +31,7 @@ public class AlarmTrigger : MonoBehaviour
 
     private void OnAlarm()
     {
-            StartCoroutine(SetVolume());
+        StartCoroutine(SetVolume());
     }
 
     IEnumerator SetVolume()

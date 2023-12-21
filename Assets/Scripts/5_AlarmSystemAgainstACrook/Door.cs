@@ -28,7 +28,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.TryGetComponent<CrookMover>(out CrookMover crook))
+        if (collision.TryGetComponent(out CrookMover crook))
         {
             IsDoorTiggered = false;
             _animator.SetBool("DoorIsTriggered", IsDoorTiggered);
