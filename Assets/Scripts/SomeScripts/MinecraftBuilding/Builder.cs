@@ -36,6 +36,10 @@ public class Builder : MonoBehaviour
 
             _buildPreviewer.SetPosition(BuildPosition);
         }
+        else
+        {
+            _buildPreviewer.Disable();
+        }
     }
 
     private void Build()
